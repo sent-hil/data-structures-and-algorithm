@@ -26,10 +26,11 @@ class Node {
     stack.push(this);
 
     while (stack.length > 0) {
+      // remove from end
       const s = stack.pop();
       accum.push(s.value);
 
-      // push right and then left, since [].pop is LIFO
+      // push right and then left to end, since [].pop is LIFO
       if (s.right !== null) stack.push(s.right);
       if (s.left !== null) stack.push(s.left);
     }
@@ -42,9 +43,11 @@ class Node {
     queue.push(this);
 
     while (queue.length > 0) {
+      // remove from beginning
       const s = queue.shift();
       accum.push(s.value);
 
+      // push to end, hence FIFO
       if (s.left !== null) queue.push(s.left);
       if (s.right !== null) queue.push(s.right);
     }

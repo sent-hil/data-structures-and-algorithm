@@ -18,6 +18,6 @@ describe("", () => {
     expect(insertionSort([1])).toEqual([1]);
     expect(insertionSort([2, 8])).toEqual([2, 8]);
     expect(insertionSort([8, 2])).toEqual([2, 8]);
-    expect(insertionSort([8, 2, 4, -1, 3, 3])).toEqual([-1, 2, 3, 3, 4, 8]);
+    expect(insertionSort([2, 4, -1, 8, 3, 3])).toEqual([-1, 2, 3, 3, 4, 8]);
   });
 });

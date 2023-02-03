@@ -10,6 +10,7 @@ const radix = (numbers) => {
   let highestLen = String(highest).length;
 
   for (let h = 0; h < highestLen; h++) {
+    // create 2 dimensional array of size 9x1, ie [[], [] ... 9 times]
     let posArr = [...Array(9)].map(() => []);
 
     for (let num of numbers) {
@@ -25,6 +26,7 @@ const radix = (numbers) => {
       if (pArr.length !== 0) newArr.push(...pArr);
     }
 
+    // each time this loop runs, it sorts by digit
     numbers = newArr;
   }
 
