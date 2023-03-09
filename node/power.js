@@ -32,7 +32,12 @@ function power1(base, exponent) {
   return result;
 }
 
-//for (i = 0; i <= 10; i++) {
-//  console.log(i, power1(2, i));
-//}
-//console.log(power1(2, -1));
+
+// Implement power as recursive function
+function powerRecursive(base, exponent) {
+  if (exponent === 0) {
+    return 1;
+  }
+
+  return base * powerRecursive(base, exponent - 1);
+}

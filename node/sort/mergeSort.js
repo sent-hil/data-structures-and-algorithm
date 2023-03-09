@@ -33,8 +33,8 @@ const merge = (arr1, arr2) => {
   return newArr;
 };
 
-describe("", () => {
-  it("merge", () => {
+describe("Sort", () => {
+  it("Merges two arrays in order", () => {
     expect(merge([], [])).toEqual([]);
     expect(merge([1], [])).toEqual([1]);
     expect(merge([], [2])).toEqual([2]);
@@ -43,7 +43,7 @@ describe("", () => {
     expect(merge([1, 2, 3], [1])).toEqual([1, 1, 2, 3]);
   });
 
-  it("mergeSort", () => {
+  it("Returns result of Merge Sort", () => {
     expect(mergeSort([])).toEqual([]);
     expect(mergeSort([1])).toEqual([1]);
     expect(mergeSort([1, 2])).toEqual([1, 2]);

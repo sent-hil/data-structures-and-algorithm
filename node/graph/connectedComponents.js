@@ -9,6 +9,8 @@ const graph = {
   2: [1],
 };
 
+// dfIterative does depth first traversal of graph while being mindful of
+// cycles in the graph
 const dfIterative = (graph, source) => {
   let [stack, accum, visited] = [[source], [], new Set()];
 
@@ -26,13 +28,20 @@ const dfIterative = (graph, source) => {
   return accum;
 };
 
+// connectedComponents returns number of strongly connected components of graph.
+// We define strongly connected as having path between the vertices.
 const connectedComponents = (graph) => {
+  // count tracks number of strongly connected components
+  // visited tracks already visited vertices
   let [count, visited] = [0, new Set()];
 
   for (let v in graph) {
+    // since keys in Object are stored as strings, we need to ensure we do
+    // same type comparison.
     if (visited.has(String(v))) continue;
 
     count++;
+
     const visitedEntries = dfIterative(graph, v);
     for (let w of visitedEntries) {
       visited.add(String(w));
@@ -43,7 +52,8 @@ const connectedComponents = (graph) => {
 };
 
 describe("connectedComponents", () => {
-  it("", () => {
+  it("returns number of connected components in graph", () => {
+    expect(connectedComponents({})).toEqual(0);
     expect(connectedComponents(graph)).toEqual(3);
   });
 });

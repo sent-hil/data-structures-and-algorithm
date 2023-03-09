@@ -10,8 +10,8 @@ const bubble = (arr) => {
   return arr;
 };
 
-describe("", () => {
-  it("", () => {
+describe("Sort", () => {
+  it("Returns result of Bubble Sort", () => {
     expect(bubble([])).toEqual([]);
     expect(bubble([1])).toEqual([1]);
     expect(bubble([3, 1, 1, 3])).toEqual([1, 1, 3, 3]);

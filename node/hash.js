@@ -1,21 +1,16 @@
-// Implement Hash in JS using only Array.
-
-import Node from "./linkedList";
-
-console.log(new Node("1", "2"));
+// Implement Hash in using only Array and LinkedList.
+const Node = require('./linkedList')
 
 class Hash {
   constructor() {
-    // initialize sized 4, empty array; 4 is a magic number, used for new hashes
+    // initialize sized 4, empty array; 4 is a random number
     this.values = Array(4).fill(null);
   }
 
   get(key) {
     let cur = this.values[this.hashKey(key)];
     while (cur !== null) {
-      if (cur.key === key) {
-        return cur.value;
-      }
+      if (cur.key === key) return cur.value;
     }
 
     return null;

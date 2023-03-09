@@ -11,7 +11,7 @@ const radix = (numbers) => {
 
   for (let h = 0; h < highestLen; h++) {
     // create 2 dimensional array of size 9x1, ie [[], [] ... 9 times]
-    let posArr = [...Array(9)].map(() => []);
+    let posArr = [...new Array(9)].map(() => []);
 
     for (let num of numbers) {
       let s = String(num);
@@ -33,8 +33,8 @@ const radix = (numbers) => {
   return numbers;
 };
 
-describe("", () => {
-  it("", () => {
+describe("Sort", () => {
+  it("Returns result of Radix Sort", () => {
     expect(radix([])).toEqual([]);
     expect(radix([1])).toEqual([1]);
     expect(radix([2, 1])).toEqual([1, 2]);

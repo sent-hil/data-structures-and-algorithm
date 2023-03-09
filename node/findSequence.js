@@ -13,4 +13,8 @@ function findSequence(goal) {
   return find(1, "1");
 }
 
-console.log(findSequence(24));
+describe("findSequence", () => {
+  it("return sequence that adds to 24", () => {
+    expect(findSequence(24)).toEqual("( ( ( 1 * 3 ) + 5 ) * 3 )")
+  })
+})

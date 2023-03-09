@@ -7,45 +7,49 @@ const graph = {
   f: [],
 };
 
-const dfRecursive = (graph, source, accum = []) => {
-  accum.push(source);
+const dfRecursive = (graph, source) => {
+  if (graph[source].length === 0) return [source]
 
-  if (graph[source].length === 0) return;
-
+  let children = []
   for (let v of graph[source]) {
-    dfRecursive(graph, v, accum);
+    children.push(...dfRecursive(graph, v))
   }
 
-  return accum;
+  return [source, ...children]
 };
 
 const dfIterative = (graph, source) => {
-  let [stack, accum] = [[source], []];
+  const [stack, accum] = [[source], []]
 
-  while (stack.length > 0) {
-    let s = stack.pop();
-    accum.push(s);
-    for (let v of graph[s].slice().reverse()) {
-      stack.push(v);
+  while (stack.length !== 0) {
+    const v = stack.pop()
+
+    // since stack is LIFO, we want to push in reverse order
+    // we call .slice(), since .reverse() will reverse in place
+    // and we don't want to modify original graph
+    for (let vs of graph[v].slice().reverse()) {
+      stack.push(vs)
     }
+
+    accum.push(v)
   }
 
-  return accum;
+  return accum
 };
 
 const breathFirst = (graph, source) => {
-  let [queue, accum] = [[source], []];
+  const [queue, accum] = [[source], []]
 
-  while (queue.length > 0) {
-    let s = queue.shift();
-    accum.push(s);
-
-    for (let v of graph[s]) {
-      queue.push(v);
+  while (queue.length !== 0) {
+    const v = queue.shift()
+    for (let vs of graph[v]) {
+      queue.push(vs)
     }
+
+    accum.push(v)
   }
 
-  return accum;
+  return accum
 };
 
 describe("Traversals", () => {

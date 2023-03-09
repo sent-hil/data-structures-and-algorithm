@@ -1,5 +1,4 @@
 // Given positive integer, return binary representation in String.
-
 const intToBinary = (n, strArr = [0]) => {
   if (n === 0) return strArr.join("");
   if (n === 1) {
@@ -24,7 +23,7 @@ const intToBinary = (n, strArr = [0]) => {
 };
 
 describe("", () => {
-  it("", () => {
+  it("intToBinary", () => {
     expect(intToBinary(0)).toEqual("0");
     expect(intToBinary(1)).toEqual("1");
     expect(intToBinary(2)).toEqual("10");

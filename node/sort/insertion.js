@@ -12,8 +12,8 @@ const insertionSort = (arr) => {
   return arr;
 };
 
-describe("", () => {
-  it("insertionSort", () => {
+describe("Sort", () => {
+  it("Returns result of Insertion Sort", () => {
     expect(insertionSort([])).toEqual([]);
     expect(insertionSort([1])).toEqual([1]);
     expect(insertionSort([2, 8])).toEqual([2, 8]);

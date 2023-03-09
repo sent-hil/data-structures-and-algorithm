@@ -38,7 +38,7 @@ describe("", () => {
 
   it("howSumMemo", () => {
     expect(howSumMemo(7, [5, 3, 4])).toEqual([4, 3]);
-    //expect(howSumMemo(7, [2, 4])).toEqual(null);
-    //expect(howSumMemo(300, [7, 14])).toEqual([]);
+    expect(howSumMemo(7, [2, 4])).toEqual(null);
+    expect(howSumMemo(300, [7, 14])).toEqual(null);
   });
 });

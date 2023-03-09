@@ -7,14 +7,14 @@ const graph1 = {
   k: [],
 };
 
-// hasPath return Boolean to indicate if there's a path between source and dest;
-// it only works with DAG.
-const hasPath = (graph, source, dest) => {
+// hasPathRecursive return Boolean to indicate if there's a path between source
+// and dest; it only works with DAG.
+const hasPathRecursive = (graph, source, dest) => {
   if (source === dest) return true;
   if (graph[source].length === 0) return false;
 
   for (let v of graph[source]) {
-    if (hasPath(graph, v, dest)) return true;
+    if (hasPathRecursive(graph, v, dest)) return true;
   }
 
   return false;
@@ -30,9 +30,9 @@ const graph2 = {
   n: ["o"],
 };
 
-// hasPath return Boolean to indicate if there's a path between source and dest;
-// it works with unordered and cyclic graphs
-const hasPath2 = (graph, source, dest) => {
+// hasPathUndirectIterative return Boolean to indicate if there's a path
+// between source and dest; it works with unordered and cyclic graphs
+const hasPathUndirectIterative = (graph, source, dest) => {
   let [stack, set] = [[source], new Set()];
 
   while (stack.length > 0) {
@@ -50,13 +50,34 @@ const hasPath2 = (graph, source, dest) => {
   return false;
 };
 
+const hasPathUndirectRecursive = (graph, source, dest, visited = new Set()) => {
+  if (source === dest) return true;
+  if (visited.has(source)) return false;
+  visited.add(source);
+
+  for (let v of graph[source]) {
+    if (hasPathUndirectRecursive(graph, v, dest, visited)) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
 describe("Path", () => {
-  it("hasPath", () => {
-    expect(hasPath(graph1, "f", "k")).toEqual(true);
+  it("hasPathRecursive", () => {
+    expect(hasPathRecursive(graph1, "f", "k")).toEqual(true);
   });
 
-  it("hasPath1", () => {
-    expect(hasPath2(graph2, "i", "m")).toEqual(true);
-    expect(hasPath2(graph2, "i", "n")).toEqual(false);
+  it("hasPathUndirectIterative", () => {
+    expect(hasPathUndirectIterative(graph1, "f", "k")).toEqual(true);
+    expect(hasPathUndirectIterative(graph2, "i", "m")).toEqual(true);
+    expect(hasPathUndirectIterative(graph2, "i", "n")).toEqual(false);
+  });
+
+  it("hasPathUndirectRecursive", () => {
+    expect(hasPathUndirectRecursive(graph1, "f", "k")).toEqual(true);
+    expect(hasPathUndirectRecursive(graph2, "i", "m")).toEqual(true);
+    expect(hasPathUndirectRecursive(graph2, "i", "n")).toEqual(false);
   });
 });

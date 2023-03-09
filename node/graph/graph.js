@@ -92,6 +92,9 @@ describe("Graph", () => {
   let g;
 
   beforeEach(() => {
+    // A - B
+    // |   |
+    // C - D
     g = new Graph();
 
     g.addVertex("A");

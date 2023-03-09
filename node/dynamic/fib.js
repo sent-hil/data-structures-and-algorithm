@@ -6,7 +6,7 @@ const fib = (n, memo = {}) => {
   return memo[n];
 };
 
-describe("", () => {
+describe("Fibonacci", () => {
   it("", () => {
     expect(fib(0)).toEqual(0);
     expect(fib(1)).toEqual(1);
