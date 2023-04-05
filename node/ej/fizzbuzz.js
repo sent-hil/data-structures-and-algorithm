@@ -10,4 +10,4 @@ function fizzBuzz(max) {
   }
 }
 
-fizzBuzz(100);
+fizzBuzz(10);

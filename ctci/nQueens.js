@@ -7,7 +7,7 @@ const place = (queensLength) => {
 
   // keeps track of which positions are not longer valid
   const col = new Set
-  // diagonoal move positions
+  // diagonal move positions
   const [left, right] = [new Set, new Set]
 
   const _place = (r) => {

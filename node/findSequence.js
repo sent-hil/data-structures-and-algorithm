@@ -1,6 +1,5 @@
 function findSequence(goal) {
   function find(start, history) {
-    console.log(start, history);
     if (start === goal) return history;
     else if (start > goal) return null;
     else
