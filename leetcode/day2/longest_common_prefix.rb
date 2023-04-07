@@ -1,33 +1,40 @@
-def sliding(str)
+# slidings returns Array of increasing sliding window of given String.
+#
+# Example:
+#   slidings("abc") => ['a', 'ab', 'abc']
+def slidings(str)
   output = []
-
-  return output unless str
-
   1.upto(str.length) do |i|
-    output.push(str[0...i])
+    output.push(str.slice(...i))
   end
 
   output
 end
 
+# longest_common_prefix returns String, the longest common prefix among given
+# Array of Strings. Returns "" if no prefix is common to the Array of Strings.
+#
+# Example:
+#   longest_common_prefix(["flower","flow","flight"]) => "fl"
 def longest_common_prefix(strArr)
+  # find smallest length string
   smallest = strArr[0]
   strArr.each {|s| smallest = s if s.size < smallest.size }
 
-  sliding_smallest = sliding(smallest)
+  # find all possible prefix of smallest string
+  sliding_smallest = slidings(smallest)
 
-  result = ""
-
-  sliding_smallest.each do |s|
+  # iterate from backwards, looking for s that's in all strArr
+  sliding_smallest.reverse_each do |s|
     possible = true
     strArr.each do |str|
-      possible = false if str[0...s.length] != s
+      possible = false if str.slice(...s.length) != s
     end
 
-    result = s if possible
+    return s if possible
   end
 
-  result
+  ""
 end
 
 require "rspec"
@@ -41,9 +48,9 @@ describe "Longest Common Prefix" do
     expect(longest_common_prefix(["reflower","flow","flight"])).to eq("")
   end
 
-  it "returns increasing sliding window of string" do
-    expect(sliding("a")).to eq(["a"])
-    expect(sliding("ab")).to eq(["a", "ab"])
-    expect(sliding("abc")).to eq(["a", "ab", "abc"])
+  it "returns slidings of string" do
+    expect(slidings("a")).to eq(["a"])
+    expect(slidings("ab")).to eq(["a", "ab"])
+    expect(slidings("abc")).to eq(["a", "ab", "abc"])
   end
 end

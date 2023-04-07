@@ -17,16 +17,16 @@ def power_bits(n)
   bits_output
 end
 
-def permutations(str)
+def substrings(str)
   bits_arr = power_bits(str.size)
-  bits_arr.inject([]) do |permutations, bits|
+  bits_arr.inject([]) do |perms, bits|
     result = []
     bits.each_with_index do |bit, i|
       result.push(str[i]) if bit === 1
     end
 
-    permutations.push(result.join(''))
-    permutations
+    perms.push(result.join(''))
+    perms
   end
 end
 
@@ -35,14 +35,15 @@ def longest_common(strArr)
   smallest = strArr[0]
   strArr.each {|s| smallest = s if s.size < smallest.size }
 
-  perms = permutations(smallest)
+  perms = substrings(smallest)
 
   perms.inject("") do |longest, p|
     possible = true
 
-    # if all strings in array has the string, it could be the longest
+    # mark possible as false if not all strings in strArr contains substring
     strArr.each { |s| possible = false if !s.include?(p) }
 
+    # if all strings in array has the string, it could be the longest
     longest = p if possible && p.size > longest.size
     longest
   end
@@ -56,9 +57,10 @@ describe "Longest Common String" do
     expect(power_bits(2)).to eq([[0,0], [0,1], [1,0], [1,1]])
   end
 
-  it "returns permutations of string" do
-    expect(permutations('a')).to eq(['', 'a'])
-    expect(permutations('ab')).to eq(['', 'b', 'a', 'ab'])
+  it "returns all possible substrings of string" do
+    expect(substrings('a')).to eq(['', 'a'])
+    expect(substrings('ab')).to eq(['', 'b', 'a', 'ab'])
+    expect(substrings('abc')).to eq(["", "c", "b", "bc", "a", "ac", "ab", "abc"])
   end
 
   it "returns longest common string" do
