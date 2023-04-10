@@ -4,10 +4,10 @@
 //
 //  Example:
 //    isHappy(19) => true
-//      12 + 92 = 82
-//      82 + 22 = 68
-//      62 + 82 = 100
-//      12 + 02 + 02 = 1
+//      1^2 + 9^2 = 82
+//      8^2 + 2^2 = 68
+//      6^2 + 8^2 = 100
+//      1^2 + 0^2 + 0^2 = 1
 //
 // https://leetcode.com/problems/happy-number/?envType=study-plan&id=level-2
 const isHappy = (n) => {
@@ -26,7 +26,7 @@ const isHappy = (n) => {
     if (calculated.has(result)) return false // loop detected
 
     calculated.add(result)
-    sArr = String(result).split('')
+    sArr = String(result).split('') // start again with new result
   }
 }
 
@@ -34,7 +34,6 @@ describe("LeetCode 75", () => {
   it("returns if number is 'happy' or not", () => {
     expect(isHappy(1)).toEqual(true)
     expect(isHappy(19)).toEqual(true)
-
     expect(isHappy(2)).toEqual(false)
   })
 })
