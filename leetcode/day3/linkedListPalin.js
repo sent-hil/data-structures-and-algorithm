@@ -1,4 +1,4 @@
-const Node = require("../../node/linkedList.js")
+const { Node } = require("../../node/linkedList.js")
 
 // isPalindrome returns Boolean to indicate if given LinkedList is a
 // Palindrome or not.

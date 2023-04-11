@@ -1,4 +1,4 @@
-const Node = require("../../node/linkedList.js")
+const { Node } = require("../../node/linkedList.js")
 
 const removeNthFromEnd = (head, n) => {
   const iterate = (head) => {

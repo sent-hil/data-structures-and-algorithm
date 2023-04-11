@@ -41,7 +41,7 @@ class Node {
   }
 }
 
-module.exports = Node;
+module.exports = { Node, build };
 
 describe("Node", () => {
   let cur = new Node(1, 1);
