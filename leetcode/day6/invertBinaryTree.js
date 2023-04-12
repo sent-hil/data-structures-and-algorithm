@@ -1,5 +1,6 @@
 const Node = require("../../node/graph/trees/binary/node")
 
+// https://leetcode.com/problems/invert-binary-tree/?envType=study-plan&id=level-2
 const invertTree = (root) => {
   if (root === null) return null
 

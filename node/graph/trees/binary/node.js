@@ -54,6 +54,27 @@ class Node {
 
     return accum;
   }
+
+  toArr() {
+    const output = []
+    const setOutput = (node, i) => {
+      if (node === null) return
+
+      output[i] = node.value
+
+      setOutput(node.left, i * 2 + 1)
+      setOutput(node.right, i * 2 + 2)
+    }
+
+    setOutput(this, 0)
+
+    // set to null since it's easier to check for that
+    for (let i = 0; i < output.length; i++) {
+      if (typeof output[i] === 'undefined') output[i] = null
+    }
+
+    return output
+  }
 }
 
 module.exports = Node;
@@ -88,4 +109,8 @@ describe("Trees", () => {
   it("does BFS iteratively with queue and returns node values", () => {
     expect(a.bfs()).toEqual(["A", "B", "C", "D", "E", "F", "G"]);
   });
+
+  it("does DFS recursively adn returns node values including null", () => {
+    expect(a.bfs()).toEqual(["A", "B", "C", "D", "E", "F", "G"]);
+  })
 });
