@@ -17,6 +17,40 @@ const build = (arr) => {
   return head
 }
 
+const buildListNode = (arr) => {
+  if (arr.length === 0) return null
+
+  const head = new ListNode(arr[0])
+  let node = head
+
+  for (let i = 1; i < arr.length; i++) {
+    node.next = new ListNode(arr[i])
+    node = node.next
+  }
+
+  return head
+}
+
+// ListNode is the linked list used by LeetCode.
+class ListNode {
+  constructor(value) {
+    this.val = value;
+    this.next = null;
+  }
+
+  toA() {
+    const output = []
+    let node = this
+
+    while (node !== null) {
+      output.push(node.val)
+      node = node.next
+    }
+
+    return output
+  }
+}
+
 // Node for LinkedList
 class Node {
   constructor(value) {
@@ -41,7 +75,7 @@ class Node {
   }
 }
 
-module.exports = { Node, build };
+module.exports = { Node, ListNode, build, buildListNode };
 
 describe("Node", () => {
   let cur = new Node(1, 1);
