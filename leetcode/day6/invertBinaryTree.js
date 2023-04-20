@@ -1,6 +1,14 @@
 const Node = require("../../node/graph/trees/binary/node")
+const { build } = require("../../node/graph/trees/binary/build")
 
+// Given the root of a binary tree, invert the tree, and return its root.
+//
 // https://leetcode.com/problems/invert-binary-tree/?envType=study-plan&id=level-2
+//
+// Example:
+//    1         1
+//   2 3   =>  3 2
+// 4 5 6 7   7 6 5 4
 const invertTree = (root) => {
   if (root === null) return null
 
@@ -11,27 +19,8 @@ const invertTree = (root) => {
   return root
 };
 
-//    1
-//   2 3
-// 4 5 6 7
-const a = new Node(1);
-const b = new Node(2);
-const c = new Node(3);
-const d = new Node(4);
-const e = new Node(5);
-const f = new Node(6);
-const g = new Node(7);
-
-a.left = b;
-a.right = c;
-b.left = d;
-b.right = e;
-c.left = f;
-c.right = g;
-
 describe("Leetcode Day 6", () => {
   it("inverts binary tree", () => {
-    expect(a.bfs()).toEqual([1, 2, 3, 4, 5, 6, 7])
-    expect(invertTree(a).bfs()).toEqual([1, 3, 2, 7, 6, 5, 4])
+    expect(invertTree(build([1, 2, 3, 4, 5, 6, 7])).bfs()).toEqual([1, 3, 2, 7, 6, 5, 4])
   })
 })

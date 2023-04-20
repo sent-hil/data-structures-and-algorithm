@@ -55,14 +55,13 @@ const mergeKLists = (lists) => {
   let newList = new ListNode(null)
   let head = newList
 
-  // no items in lists to begin with
-  if (lists.length === 0) return head.next
-
   while (true) {
     // get first value from all linkedLists in lists
     const arr = []
     for (let i = 0; i < lists.length; i++) {
-      if (lists[i] === undefined || lists[i] === null) arr[i] = Infinity // null case
+      if (lists[i] === undefined || lists[i] === null) {
+        arr[i] = Infinity // null case
+      }
       else arr[i] = lists[i].val
     }
 

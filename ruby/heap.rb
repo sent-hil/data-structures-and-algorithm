@@ -67,7 +67,7 @@ class Heap
 
   private
 
-  def initialize_compare(symbol, &fn)
+  def initialize_compare(&fn)
     @compare = fn
   end
 
