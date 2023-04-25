@@ -37,6 +37,20 @@ def longest_common_prefix(strArr)
   ""
 end
 
+def longest_common_prefix1(strArr)
+  first = strArr[0]
+  prefix = ""
+
+  first.chars.each_with_index do |c, i|
+    strArr[1..].each do |str|
+      return prefix if c != str[i]
+    end
+    prefix << c
+  end
+
+  prefix
+end
+
 require "rspec"
 
 describe "Longest Common Prefix" do
@@ -46,6 +60,14 @@ describe "Longest Common Prefix" do
     expect(longest_common_prefix(["a"])).to eq("a")
     expect(longest_common_prefix(["ab", "a"])).to eq("a")
     expect(longest_common_prefix(["reflower","flow","flight"])).to eq("")
+  end
+
+  it "returns longest common prefix" do
+    expect(longest_common_prefix1(["flower","flow","flight"])).to eq("fl")
+    expect(longest_common_prefix1(["dog","racecar","car"])).to eq("")
+    expect(longest_common_prefix1(["a"])).to eq("a")
+    expect(longest_common_prefix1(["ab", "a"])).to eq("a")
+    expect(longest_common_prefix1(["reflower","flow","flight"])).to eq("")
   end
 
   it "returns slidings of string" do
