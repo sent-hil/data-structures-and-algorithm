@@ -6,6 +6,9 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    rexml (3.2.6)
+    ruby-graphviz (1.2.5)
+      rexml
 
 PLATFORMS
   arm64-darwin-22
@@ -13,6 +16,7 @@ PLATFORMS
 
 DEPENDENCIES
   pry
+  ruby-graphviz
 
 BUNDLED WITH
    2.5.4
