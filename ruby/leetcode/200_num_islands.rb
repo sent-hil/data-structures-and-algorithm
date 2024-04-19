@@ -4,7 +4,7 @@
 # An island is surrounded by water and is formed by connecting adjacent lands
 # horizontally or vertically. You may assume all four edges of the grid are all
 # surrounded by water.
-
+#
 # Example 1:
 # Input: grid = [
 #   ['1', '1', '1', '1', '0'],
@@ -13,6 +13,7 @@
 #   ['0', '0', '0', '0', '0']
 # ]
 # Output: 1
+#
 # Example 2:
 # Input: grid = [
 #   ['1', '1', '0', '0', '0'],
@@ -21,6 +22,8 @@
 #   ['0', '0', '0', '1', '1']
 # ]
 # Output: 3
+#
+# https://leetcode.com/problems/number-of-islands/
 def num_islands(grid)
   return 0 if grid.empty?
 
@@ -39,6 +42,8 @@ def num_islands(grid)
 
       visited[[ri, ci]] = true
 
+      # Iterate 4 directions: [N, S, E, W] from current position, add to queue
+      # if new place is in bounds and has '1' and hasn't been visited.
       [[-1, 0], [1, 0], [0, 1], [0, -1]].each do |x, y|
         nri = ri + x
         nci = ci + y
@@ -50,6 +55,8 @@ def num_islands(grid)
     end
   end
 
+  # Iterate through matrix; When first '1' is found, doing BFS from that place,
+  # marking everything accessible in 4 directions as visited.
   grid.each_with_index do |row, row_i|
     row.each_with_index do |item, col_i|
       if item == '1' && visited[[row_i, col_i]].nil?
