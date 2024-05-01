@@ -1,3 +1,5 @@
+require_relative "node"
+
 # Given a reference of a node in a connected undirected graph.
 #
 # Return a deep copy (clone) of the graph.
@@ -16,17 +18,6 @@
 #
 # The given node will always be the first node with val = 1. You must return the
 # copy of the given node as a reference to the cloned graph.
-
-class Node
-  attr_accessor :val, :neighbors
-
-  def initialize(val = 0, neighbors = nil)
-    @val = val
-    neighbors = [] if neighbors.nil?
-    @neighbors = neighbors
-  end
-end
-
 def cloneGraph(node, store = {})
   return if node.nil?
   return store[node.val] if store[node.val]
@@ -41,15 +32,15 @@ def cloneGraph(node, store = {})
   new_node
 end
 
-RSpec.describe 'cloneGraph' do
-  context 'when the graph is empty' do
-    it 'returns nil for nil input' do
+RSpec.describe "cloneGraph" do
+  context "when the graph is empty" do
+    it "returns nil for nil input" do
       expect(cloneGraph(nil)).to be_nil
     end
   end
 
-  context 'when the graph has a single node without neighbors' do
-    it 'clones the single node correctly' do
+  context "when the graph has a single node without neighbors" do
+    it "clones the single node correctly" do
       node = Node.new(1)
       cloned_node = cloneGraph(node)
 
@@ -58,8 +49,8 @@ RSpec.describe 'cloneGraph' do
     end
   end
 
-  context 'when the graph has multiple nodes with neighbors' do
-    it 'clones the graph correctly' do
+  context "when the graph has multiple nodes with neighbors" do
+    it "clones the graph correctly" do
       #      1
       #     / \
       #    /   \

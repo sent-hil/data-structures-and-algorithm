@@ -48,7 +48,7 @@ def num_islands(grid)
         nri = ri + x
         nci = ci + y
 
-        if (0...row_len).include?(nri) && (0...col_len).include?(nci) && grid[nri][nci] == '1' && visited[[nri, nci]].nil?
+        if (0...row_len).include?(nri) && (0...col_len).include?(nci) && grid[nri][nci] == "1" && visited[[nri, nci]].nil?
           queue.push([nri, nci])
         end
       end
@@ -59,7 +59,7 @@ def num_islands(grid)
   # marking everything accessible in 4 directions as visited.
   grid.each_with_index do |row, row_i|
     row.each_with_index do |item, col_i|
-      if item == '1' && visited[[row_i, col_i]].nil?
+      if item == "1" && visited[[row_i, col_i]].nil?
         bfs.call(row_i, col_i)
         num_islands += 1
       end
@@ -69,41 +69,41 @@ def num_islands(grid)
   num_islands
 end
 
-describe '#num_islands' do
+describe "#num_islands" do
   it do
     input = [
-      ['1', '1', '1', '1', '0'],
-      ['1', '1', '0', '1', '0'],
-      ['1', '1', '0', '0', '0'],
-      ['0', '0', '0', '0', '0']
+      ["1", "1", "1", "1", "0"],
+      ["1", "1", "0", "1", "0"],
+      ["1", "1", "0", "0", "0"],
+      ["0", "0", "0", "0", "0"]
     ]
     expect(num_islands(input)).to eq(1)
   end
 
   it do
     input = [
-      ['1', '1', '0', '0', '0'],
-      ['1', '1', '0', '0', '0'],
-      ['0', '0', '1', '0', '0'],
-      ['0', '0', '0', '1', '1']
+      ["1", "1", "0", "0", "0"],
+      ["1", "1", "0", "0", "0"],
+      ["0", "0", "1", "0", "0"],
+      ["0", "0", "0", "1", "1"]
     ]
     expect(num_islands(input)).to eq(3)
   end
 
   it do
     input = [
-      ['1', '1', '1'],
-      ['0', '1', '0'],
-      ['1', '1', '1']
+      ["1", "1", "1"],
+      ["0", "1", "0"],
+      ["1", "1", "1"]
     ]
     expect(num_islands(input)).to eq(1)
   end
 
   it do
     input = [
-      ['1', '0', '1', '1', '1'],
-      ['1', '0', '1', '0', '1'],
-      ['1', '1', '1', '0', '1']
+      ["1", "0", "1", "1", "1"],
+      ["1", "0", "1", "0", "1"],
+      ["1", "1", "1", "0", "1"]
     ]
     expect(num_islands(input)).to eq(1)
   end

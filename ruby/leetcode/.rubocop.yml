@@ -1,0 +1,11 @@
+require: standard
+inherit_gem:
+  standard: config/base.yml
+AllCops:
+  TargetRubyVersion: 3.3
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 15
+Naming/InclusiveLanguage:
+  Enabled: true
+  CheckStrings: true

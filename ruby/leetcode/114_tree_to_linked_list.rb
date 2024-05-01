@@ -1,5 +1,4 @@
-require "rspec"
-require "pry"
+require_relative "tree_node"
 
 # Given the root of a binary tree, flatten the tree into a "linked list":
 #
@@ -14,17 +13,6 @@ require "pry"
 # image).
 #
 # Definition for a binary tree node.
-class TreeNode
-  attr_accessor :val, :left, :right
-
-  def initialize(val = 0, left = nil, right = nil)
-    @val = val
-    @left = left
-    @right = right
-  end
-end
-# @param {TreeNode} root
-# @return {Void} Do not return anything, modify root in-place instead.
 def flatten(root, results = [])
   return if root.nil?
 
@@ -40,7 +28,7 @@ def flatten(root, results = [])
   results
 end
 
-RSpec.describe 'flatten' do
+RSpec.describe "flatten" do
   # Helper method to convert a tree to an array using the right pointers
   def tree_to_array(root)
     result = []
@@ -53,44 +41,44 @@ RSpec.describe 'flatten' do
 
   it do
     root = TreeNode.new(1, TreeNode.new(2, TreeNode.new(3), TreeNode.new(4)), TreeNode.new(5, nil, TreeNode.new(6)))
-    expect(flatten(root)).to eq([1,2,3,4,5,6])
+    expect(flatten(root)).to eq([1, 2, 3, 4, 5, 6])
   end
 
-  it 'flattens an empty tree' do
+  it "flattens an empty tree" do
     flatten(nil)
     expect(tree_to_array(nil)).to eq([])
   end
 
-  xit 'flattens a single node tree' do
+  xit "flattens a single node tree" do
     root = TreeNode.new(1)
     flatten(root)
     expect(tree_to_array(root)).to eq([1])
   end
 
-  xit 'flattens a linear right-skewed tree' do
+  xit "flattens a linear right-skewed tree" do
     root = TreeNode.new(1, nil, TreeNode.new(2, nil, TreeNode.new(3)))
     flatten(root)
     expect(tree_to_array(root)).to eq([1, 2, 3])
   end
 
-  xit 'flattens a linear left-skewed tree' do
+  xit "flattens a linear left-skewed tree" do
     root = TreeNode.new(1, TreeNode.new(2, TreeNode.new(3)))
     flatten(root)
     expect(tree_to_array(root)).to eq([1, 2, 3])
   end
 
-  xit 'flattens a complete binary tree' do
+  xit "flattens a complete binary tree" do
     root = TreeNode.new(1,
-                         TreeNode.new(2, TreeNode.new(3), TreeNode.new(4)),
-                         TreeNode.new(5, nil, TreeNode.new(6)))
+      TreeNode.new(2, TreeNode.new(3), TreeNode.new(4)),
+      TreeNode.new(5, nil, TreeNode.new(6)))
     flatten(root)
     expect(tree_to_array(root)).to eq([1, 2, 3, 4, 5, 6])
   end
 
-  xit 'flattens a complex tree' do
+  xit "flattens a complex tree" do
     root = TreeNode.new(1,
-                         TreeNode.new(2, TreeNode.new(3)),
-                         TreeNode.new(4, nil, TreeNode.new(5, TreeNode.new(6), nil)))
+      TreeNode.new(2, TreeNode.new(3)),
+      TreeNode.new(4, nil, TreeNode.new(5, TreeNode.new(6), nil)))
     flatten(root)
     expect(tree_to_array(root)).to eq([1, 2, 3, 4, 5, 6])
   end
