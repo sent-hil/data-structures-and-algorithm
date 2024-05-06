@@ -7,3 +7,5 @@ group :development, :test do
   gem "rspec"
   gem "standard", "~> 1", require: false
 end
+
+gem "algorithms", "~> 1.0"
