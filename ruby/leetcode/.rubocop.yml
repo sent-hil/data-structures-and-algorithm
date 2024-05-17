@@ -9,3 +9,5 @@ Metrics/CyclomaticComplexity:
 Naming/InclusiveLanguage:
   Enabled: true
   CheckStrings: true
+Style/NegatedIf:
+  Enabled: false

@@ -5,7 +5,6 @@ source "https://rubygems.org"
 group :development, :test do
   gem "pry"
   gem "rspec"
-  gem "standard", "~> 1", require: false
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rspec", require: false
 end
-
-gem "algorithms", "~> 1.0"
