@@ -1,5 +1,3 @@
-require "pry"
-
 # You are given an integer array coins representing coins of different
 # denominations and an integer amount representing a total amount of money.
 #
@@ -20,7 +18,8 @@ def coin_change_dynamic(coins, amount)
 
     coins.each do |c|
       if i - c >= 0
-        dp[i] = [(1 + dp[i - c]), dp[i]].min
+        # it takes 1 coin + remainder of amount-coin to make dp[i]
+        dp[i] = 1 + dp[i - c]
       end
     end
   end
@@ -31,6 +30,10 @@ end
 describe "coin_change_dynamic" do
   it do
     expect(coin_change_dynamic([1, 2, 5], 8)).to eq(3)
+  end
+
+  it do
+    expect(coin_change_dynamic([2, 5], 7)).to eq(2)
   end
 
   it do

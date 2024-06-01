@@ -29,18 +29,6 @@ def coin_change(coins, amount, store = {})
   (store[amount] == Float::INFINITY) ? -1 : store[amount]
 end
 
-def coin_change_dynamic(coins, amount)
-  dp = Array.new(amount, Float::INFINITY)
-
-  dp.each_with_index do |e, i|
-    next if i == 0
-
-    coins.each_with_index do |c, j|
-      dp[i] = [(1 + dp[c - e]), dp[i]].min
-    end
-  end
-end
-
 describe "coin_change" do
   it do
     expect(coin_change([1, 2, 5], 11)).to eq(3)
@@ -52,19 +40,5 @@ describe "coin_change" do
 
   it do
     expect(coin_change([1], 0)).to eq(0)
-  end
-end
-
-describe "coin_change_dynamic" do
-  it do
-    expect(coin_change_dynamic([1, 2, 5], 11)).to eq(3)
-  end
-
-  it do
-    expect(coin_change_dynamic([2], 3)).to eq(-1)
-  end
-
-  it do
-    expect(coin_change_dynamic([1], 0)).to eq(0)
   end
 end
