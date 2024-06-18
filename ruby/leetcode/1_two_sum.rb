@@ -10,6 +10,11 @@
 #       2 <= nums.length <= 104
 #   -10^9 <= nums[i]     <= 10^9
 #   -10^9 <= target      <= 10^9
+#
+# Source: https://leetcode.com/problems/two-sum/
+#
+# Time: O(n)
+# Space: O(1)
 def two_sum(nums, target)
   seen = {}
 

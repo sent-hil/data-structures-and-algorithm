@@ -8,7 +8,9 @@
 #
 # The test cases are generated so that the answer will be less than or equal to
 # 2 * 109.
-
+#
+# Source: https://leetcode.com/problems/unique-paths/
+#
 def grid_traveler(i, j)
   paths = Array.new(i) { Array.new(j, 1) }
   paths.each_with_index do |p, i|
