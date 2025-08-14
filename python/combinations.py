@@ -2,14 +2,14 @@ def search(n):
     subset = []
     combinations = []
 
-    def _search(k)
-        print("search", k, subset)
+    def _search(k):
         if k == n:
+            # copy or subset will point to single reference which will be empty at the very end
             combinations.append(subset.copy())
         else:
-            search(k + 1)
+            _search(k + 1)
             subset.append(k)
-            search(k + 1)
+            _search(k + 1)
             subset.pop()
 
     _search(0)
@@ -27,5 +27,5 @@ def generate_with_bit(n):
 
     return combos
 
-print search(3)
-print generate_with_bit(3)
+print(search(3))
+print(generate_with_bit(3))
