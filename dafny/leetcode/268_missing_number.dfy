@@ -27,27 +27,11 @@
 //
 // https://leetcode.com/problems/missing-number/description
 
-// ghost function so we can use this in MissingNumber ensures
-ghost function SumSpec(s: seq<int>): int
+function Sum(s: seq<int>): int
   decreases s
 {
-  // if length of s is 0, then 0
   if |s| == 0 then 0
-
-  // else it's first element + recursive call
-  else s[0] + SumSpec(s[1..])
-}
-
-method Sum(s: seq<int>) returns (r: int)
-  ensures r == SumSpec(s)
-  decreases s
-{
-  if |s| == 0 {
-    r := 0;
-  } else {
-    r := Sum(s[1..]); // dafny requires this be stored in a variable
-    r := s[0] + r;
-  }
+  else s[0] + Sum(s[1..])
 }
 
 ghost predicate ValidInput(s: seq<int>)
@@ -67,7 +51,7 @@ function GaussianAddition(n: nat): nat
 
 method MissingNumber(s: seq<int>) returns (m: int)
   requires ValidInput(s)
-  ensures m == GaussianAddition(|s|) - SumSpec(s)
+  ensures m == GaussianAddition(|s|) - Sum(s)
 {
   // Gaussian addition to figure out expected sum
   var expectedSum := GaussianAddition(|s|);
